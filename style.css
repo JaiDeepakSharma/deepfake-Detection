@@ -9,30 +9,47 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
-  background: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Web vector pattern */
-  background-color: #fafafa;
-  color: #333;
-  transition: background 0.3s ease;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  transition: background 120s ease;
+  overflow-x: hidden;
 }
+
+/* Live Background Animation 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/cubes.png");
+  opacity: 0.08;
+  z-index: -1;
+  animation: moveBackground 60s linear infinite;
+}
+
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}*/
 
 /* Navbar */
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
 }
 
 nav .logo {
   font-weight: bold;
   font-size: 1.7rem;
-  color: #3f51b5;
+  color: #90caf9;
   transition: transform 0.3s;
 }
 
@@ -48,7 +65,7 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-weight: 500;
   position: relative;
   padding-bottom: 2px;
@@ -62,12 +79,12 @@ nav a::after {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #3f51b5;
+  background-color: #90caf9;
   transition: 0.4s ease;
 }
 
 nav a:hover {
-  color: #3f51b5;
+  color: #90caf9;
 }
 
 nav a:hover::after {
@@ -78,25 +95,24 @@ nav a:hover::after {
 header {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #e3f2fd 0%, #f0f4ff 100%);
-  transition: background 0.4s ease;
+  background: linear-gradient(135deg, #4e1f11 0%, #3949ab 100%);
+  color: #fff;
 }
 
 header h1 {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
-  color: #333;
 }
 
 header p {
   font-size: 1.2rem;
-  color: #555;
+  color: #cfd8dc;
 }
 
 /* Sections */
 section {
   padding: 3rem 2rem;
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
   opacity: 0;
   transform: translateY(30px);
@@ -119,61 +135,83 @@ section:nth-child(even) {
 
 /* Titles */
 h2 {
-  margin-bottom: 1.2rem;
-  color: #3f51b5;
+  margin-bottom: 1.5rem;
+  color: #bbdefb;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Timeline Horizontal */
+.timeline-horizontal {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
   text-align: center;
 }
 
-/* Timeline */
-.timeline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
 .stage {
-  padding: 1rem 1.5rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.06);
-  transition: transform 0.3s, background 0.3s;
-  cursor: default;
+  flex: 1;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border: 1px solid #90caf9;
+  color: #ffffff;
+  font-weight: bold;
+  min-width: 120px;
+  transition: transform 0.3s ease;
 }
 
 .stage:hover {
-  transform: translateY(-5px);
-  background: #f0f8ff;
+  transform: scale(1.05);
 }
 
-/* Members */
+/* Team Section */
+.team-leader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.team-leader img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px; /* Slightly rounded corners */
+  border: 3px solid #121213;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-leader h3 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
 .member-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .member {
   text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.member:hover {
-  transform: scale(1.05);
 }
 
 .member img {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
-  border: none;
-  border-radius: 0; /* makes it a perfect square */
-  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-  transition: transform 0.3s;
-
+  border-radius: 12px;
+  border: 2px solid #1f2d39;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+.member h3 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Mentor Section */
 .mentor-group {
   display: flex;
   justify-content: center;
@@ -184,7 +222,7 @@ h2 {
 .mentor-group img {
   width: 250px;
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   transition: transform 0.4s ease;
 }
 
@@ -196,23 +234,69 @@ h2 {
 #project a {
   display: inline-block;
   padding: 0.8rem 1.2rem;
-  background: #3f51b5;
-  color: white;
+  background: #90caf9;
+  color: #000;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+#project p {
+  text-align: center;
 }
 
+
 #project a:hover {
-  background: #2c3e94;
+  background: #64b5f6;
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 2rem;
-  background: #f1f1f1;
+  background: #121212;
   margin-top: 3rem;
   font-size: 0.9rem;
-  color: #555;
+  color: #bbb;
 }
+/* Smooth transitions and hover zoom effect for images */
+.member img,
+.team-leader img,
+.mentor-group img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* On hover: zoom + shadow effect */
+.member img:hover,
+.mentor-group img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: shadow + lift on full member card */
+.member:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Description styles */
+.description {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: black; /* Ensures background blends with the page */
+  color: #ffffff; /* Keeps text color consistent with your design */
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow effect */
+}
+
+/* Transition when showing description */
+.description.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+
