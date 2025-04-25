@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import cv2
 import numpy as np
-import tensorflow as tf
 from werkzeug.utils import secure_filename
 import librosa
 import tempfile
@@ -237,33 +236,6 @@ def process_image(image_path):
     except Exception as e:
         return {'error': str(e)}
 
-def process_video(video_path):
-    """
-    Process video for deepfake detection
-    """
-    try:
-        # Load video
-        cap = cv2.VideoCapture(video_path)
-        frames = []
-        
-        while cap.isOpened():
-            ret, frame = cap.read()
-            if not ret:
-                break
-            frame = cv2.resize(frame, (224, 224))
-            frames.append(frame)
-        
-        cap.release()
-        
-        # TODO: Add your deepfake detection model here
-        # For now, returning a dummy prediction
-        return {
-            'is_deepfake': False,
-            'confidence': 0.92,
-            'details': 'No deepfake detected in the video'
-        }
-    except Exception as e:
-        return {'error': str(e)}
 
 def process_audio(audio_path):
     """
